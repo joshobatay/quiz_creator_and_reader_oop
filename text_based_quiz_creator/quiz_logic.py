@@ -3,7 +3,6 @@
 
 import json
 from pathlib import Path
-import os
 
 class Question:
     def __init__(self, question, choices, correct_answer, explanation):
@@ -12,7 +11,7 @@ class Question:
         self.correct_answer = correct_answer
         self.explanation = explanation
 
-    def convert_questions_to_dictionary(self):
+    def convert_questions_to_list(self):
         return {
             "Question": self.question,
             "Choices": self.choices,
@@ -20,4 +19,25 @@ class Question:
             "Explanation": self.explanation
         }
         
+class QuizCreator:
+    def __init__(self, quiz_name):
+        self.quiz_name = quiz_name
+        self.question = []
+    
+    def add_question(self, question):
+        self.question.append(question)
         
+    def convert_questions_to_list(self):
+        return {
+            "quiz_name": self.quiz_name,
+            "questions": {
+                f"quiz_question_{question_index + 1}": question.convert_questions_to_list()
+                for question_index, question in enumerate(self.question)
+            }
+        }
+        
+    def save_to_json(self, file_path):
+        file_path = Path(file_path)
+        with open(file_path, 'w') as file:
+            json.dump(self.convert_questions_to_list, file, indent=4)
+        print(f"Quiz saved to {file_path}")
