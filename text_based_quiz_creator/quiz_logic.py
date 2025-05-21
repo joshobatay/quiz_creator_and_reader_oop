@@ -39,5 +39,5 @@ class QuizCreator:
     def save_to_json(self, file_path):
         file_path = Path(file_path)
         with open(file_path, 'w') as file:
-            json.dump(self.convert_questions_to_list, file, indent=4)
+            json.dump(self.convert_questions_to_list(), file, indent=4)
         print(f"Quiz saved to {file_path}")
