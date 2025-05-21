@@ -67,7 +67,7 @@ def create_quiz():
         question_count += 1
         clear_screen()
 
-    if quiz.questions:
+    if quiz.question:
         desktop_path = Path.home() / "Desktop"
         destination = desktop_path / "create_your_own_quiz.json"
 
