@@ -4,7 +4,7 @@
 
 import os
 from pathlib import Path
-from colorama import Fore, Style, init
+from colorama import Fore, init
 from quiz_logic import QuizCreator, Question
 
 init(autoreset=True)  # Initialize colorama to reset colors automatically
@@ -17,7 +17,7 @@ def developer_info():
         clear_screen()
         print(Fore.GREEN + """
 Program made by: BSCpE 1-6 | Gabriel Josh A. Obatay
-        """ + Style.RESET_ALL)
+        """)
         choice = input("Press 'b' to go back to the main menu: ").strip().lower()
         if choice == "b":
             clear_screen()
@@ -59,7 +59,8 @@ def create_quiz():
         print(f"Correct Answer: {Fore.GREEN + correct_answer}")
         print(f"Explanation: {Fore.GREEN + explanation}")
 
-        user_input = input(f"Do you want to add another question? (Type {Fore.RED + 'stop'} to quit or press Enter to continue): ").strip().lower()
+        user_input = input(f"Do you want to add another question? {Fore.RED + 'Type stop to quit' + Fore.RESET} " 
+                            f"or {Fore.GREEN + 'press Enter to continue' + Fore.RESET}: ").strip().lower()
         if user_input == "stop":
             clear_screen()
             break
