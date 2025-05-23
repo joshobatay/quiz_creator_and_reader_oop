@@ -82,5 +82,5 @@ def create_quiz():
         try:
             quiz.save_to_json(destination)
             print(Fore.GREEN + "JSON file created successfully.")
-        except Exception as e:
-            print(Fore.RED + f"An error occurred: {e}")
+        except Exception as error_message:
+            print(Fore.RED + f"An error occurred: {error_message}")
