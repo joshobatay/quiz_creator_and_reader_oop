@@ -81,8 +81,8 @@ class QuizReader(DifficultyManager):
                       Fore.GREEN + f"You completed the quiz with a score of {score}/{len(questions)}!")
                 return_to_main_menu() 
                 
-        except Exception as e:
-            print(f"Error reading the file: {e}")
+        except Exception as error_message:
+            print(f"Error reading the file: {error_message}")
             
 class DeveloperInfo(DifficultyManager):
     def show_developer_info(self):
