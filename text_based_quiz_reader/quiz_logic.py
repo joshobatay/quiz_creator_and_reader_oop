@@ -64,10 +64,10 @@ class QuizReader(DifficultyManager):
                             print(Fore.RED + "Invalid choice. Please enter A, B, C, or D.")
                         else:
                             lives -= 1
-                            print(Fore.RED + f"Wrong! The correct answer was {q['Correct Answer']}.")
+                            print(Fore.RED + f"Wrong! The correct answer was {question_data['Correct Answer']}.")
                             print(Fore.YELLOW + f"Lives left: {lives}")
                             break
-                    print(f"Explanation: {q['Explanation']}\n")
+                    print(f"Explanation: {question_data['Explanation']}\n")
                     input("Press Enter to continue...")
                     clear_screen()
                     
