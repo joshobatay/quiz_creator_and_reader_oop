@@ -18,10 +18,10 @@ def loading_screen():
     clear_screen()
     print(Fore.CYAN + "Loading...")
     bar_length = 30
-    for i in range(bar_length + 1):
+    for i in range(1, bar_length + 1):
         time.sleep(0.1)
-        bar = "=" * (i + 1)
-        progress = int(((i + 1) / bar_length) * 100)
+        bar = "=" * i
+        progress = int((i / bar_length) * 100)
         sys.stdout.write(f"\r[{bar:<{bar_length}}] {progress}%")
         sys.stdout.flush()
     time.sleep(0.5)
