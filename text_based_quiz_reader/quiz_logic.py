@@ -9,7 +9,7 @@ from colorama import Fore
 from user_interface import clear_screen, loading_screen, return_to_main_menu
 
 class DifficultyManager:
-    def select_diffculty(self):
+    def select_difficulty(self):
         clear_screen()
         print(f'''
 Select Difficulty Level:
@@ -45,18 +45,18 @@ class QuizReader(DifficultyManager):
                 questions = data["questions"]
                 
                 print(f"Welcome to the quiz: {quiz_name}\n")
-                lives = self.select_diffculty()
+                lives = self.select_difficulty()
                 loading_screen()
                 score = 0
                 
-                for key, q in questions.items():
-                    print(f"\n{Fore.YELLOW}{key.replace('_', ' ').title()}: {q['Question']}")
-                    for option, answer in q["Choices"].items():
+                for question_key, question_data in questions.items():
+                    print(f"\n{Fore.YELLOW}{question_key.replace('_', ' ').title()}: {question_data['Question']}")
+                    for option, answer in question_data["Choices"].items():
                         print(f"{option}: {answer}")
                         
                     while True:
-                        answer = input("Enter your answer (A/B/C/D): ").strip().lower()
-                        if answer == q["Correct Answer"]:
+                        answer = input("Enter your answer (A/B/C/D): ").strip().upper()
+                        if answer == question_data["Correct Answer"]:
                             score += 1
                             print(Fore.GREEN + "Correct!")
                             break
